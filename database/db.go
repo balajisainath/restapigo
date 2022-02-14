@@ -3,8 +3,13 @@ package database
 import (
 	"log"
 
+	"github.com/balajisainath/restapigo/models"
 	"github.com/jinzhu/gorm"
 )
+var DB *gorm.DB
+func GetDB()*gorm.DB{
+	return DB
+}
 
 func Setup() {
 	host := "localhost"
@@ -17,6 +22,8 @@ func Setup() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	db.AutoMigrate()
+	db.AutoMigrate(models.Book{})
+	DB=db
+
 
 }
