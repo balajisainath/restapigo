@@ -5,9 +5,12 @@ import (
 
 	"github.com/balajisainath/restapigo/models"
 	"github.com/jinzhu/gorm"
+	_ "github.com/jinzhu/gorm/dialects/postgres"
 )
+
 var DB *gorm.DB
-func GetDB()*gorm.DB{
+
+func GetDB() *gorm.DB {
 	return DB
 }
 
@@ -23,7 +26,6 @@ func Setup() {
 		log.Fatal(err)
 	}
 	db.AutoMigrate(models.Book{})
-	DB=db
-
+	DB = db
 
 }
